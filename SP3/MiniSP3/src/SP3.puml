@@ -1,0 +1,44 @@
+@startuml
+class Main
+class StreamingPlatform
+class MainMenu
+class LoginMenu
+class Movie
+class TextUI
+class FileIO
+
+interface User
+abstract Media
+abstract AMenu
+
+
+Main *-- StreamingPlatform
+Main : +static void main(String[] args)
+
+FileIO --* StreamingPlatform
+
+StreamingPlatform : -MainMenu mainMenu
+StreamingPlatform : -LoginMenu loginMenu
+StreamingPlatform : -TextUI ui
+
+TextUI --* StreamingPlatform
+TextUI : +void displayMessage(...)
+TextUI : +skal være en metode ikke field
+TextUI : -skal være en field
+
+AMenu --* StreamingPlatform
+
+AMenu <|-- MainMenu
+
+AMenu <|-- LoginMenu
+
+User --* MainMenu
+User : nødvendigt?
+
+Media --|> MainMenu
+
+Media <|-- Movie
+
+
+
+@enduml
